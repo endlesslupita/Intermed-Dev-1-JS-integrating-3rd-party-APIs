@@ -12,7 +12,9 @@
 </main>
 
 <script>
-document.getElementById("button1").addEventListener("click", async function() {const response = await fetch("http://itsthisforthat.com/api.php?json"); const data = await response.json()})
+document.getElementById("button1").addEventListener("click", async function() {const response = await fetch("http://itsthisforthat.com/api.php?json"); const data = await response.json(); document.getElementById("display").textContent = ("It's like " +  data.this + " for " + data.that)})
+
+
 </script>
 
 </body>
