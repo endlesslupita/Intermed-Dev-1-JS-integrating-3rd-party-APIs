@@ -1,5 +1,44 @@
-# Intermed-Dev-1-JS-integrating-3rd-party-APIs
-Web application to demonstrate third-party API integration
+# Startup Idea Generator
+
+A single-page web app that generates random startup ideas using the [ItsThisForThat API](https://itsthisforthat.com/api.php).
+
+## How to Run
+
+1. Clone or download this repository.
+2. Open `home.html` using a local web server (e.g. the Live Server extension in VS Code).
+3. Click the **Generate a startup idea** button to get a random idea.
+
+> Note: Opening `home.html` directly as a file (`file://`) will cause a CORS error. Use Live Server or any local web server.
+
+## Write-up
+
+**API choice:** ItsThisForThat — a simple, no-authentication API that returns a random pair of concepts as JSON, formatted as `{"this": "...", "that": "..."}`.
+
+**Functionality:** The app displays a button. When clicked, it fetches a random concept pair from the API via a CORS proxy and displays the result as "It's like [this] for [that]."
+
+**Challenges:** The API does not send CORS headers, so direct browser requests are blocked by the browser's same-origin policy. This was resolved by routing requests through the `api.allorigins.win` proxy, which adds the required headers. Intermittent 500 errors from the proxy are handled by a `try/catch` block that displays a friendly error message.
+
+## Test Cases
+
+### Normal Cases
+
+| # | Action | Expected Result |
+|---|--------|----------------|
+| 1 | Click the button once | A startup idea appears in the format "It's like X for Y" |
+| 2 | Click the button again | A different (random) startup idea is displayed |
+| 3 | Click the button multiple times | Each click produces a valid idea without breaking the page |
+
+### Edge Cases
+
+| # | Scenario | Expected Result |
+|---|----------|----------------|
+| 1 | Disconnect from the internet, then click the button | Error message "Sorry, the VC money ran out." is displayed |
+| 2 | Reconnect and click again after an error | App recovers and displays a valid idea |
+| 3 | Click the button rapidly multiple times | App does not crash; eventually displays a valid result or error message |
+
+---
+
+## Assignment Instructions
 
 Objective: Develop a small web application that integrates with a third-party API of your choice. This assignment is designed to enhance your skills in API integration, understanding documentation, and creating a functional application based on an API's capabilities.
 
