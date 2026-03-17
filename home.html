@@ -1,18 +1,19 @@
 <html>
 <head>
-        
 </head>
+
 <body>
-        <main>
+<main>
 
 <input type="button" id="button1" value="Generate a startup idea" />
 
 <p id="display"></p>
 
-        </main>
+</main>
+
+<script>
+document.getElementById("button1").addEventListener("click", async function() {const response = await fetch("http://itsthisforthat.com/api.php?json"); const data = await response.json()})
+</script>
+
 </body>
 </html>
-<script>
-document.getElementById(button1)
-addEventListener()
-</script>
