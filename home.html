@@ -3,19 +3,22 @@
 </head>
 
 <body>
-<main>
+  <main>
+    <input type="button" id="button1" value="Generate a startup idea" />
+    <p id="display"></p>
+  </main>
 
-<input type="button" id="button1" value="Generate a startup idea" />
-
-<p id="display"></p>
-
-</main>
-
-<script>
-document.getElementById("button1").addEventListener("click", async function() {try { const response = await fetch("https://api.allorigins.win/get?url=http://itsthisforthat.com/api.php?json"); const data = await response.json(); const idea = JSON.parse(data.contents); document.getElementById("display").textContent = ("It's like " +  idea.this + " for " + idea.that)} catch (error) {document.getElementById("display").textContent = ("Sorry, the VC money ran out.")}})
-
-
-</script>
+  <script>
+    document.getElementById("button1").addEventListener("click", async function() {
+      try {
+        const response = await fetch("https://corsproxy.io/?http://itsthisforthat.com/api.php?json");
+        const data = await response.json();
+        document.getElementById("display").textContent = ("It's like " + data.this + " for " + data.that)
+      } catch (error) {
+        document.getElementById("display").textContent = ("Sorry, the VC money ran out.")
+      }
+    })
+  </script>
 
 </body>
 </html>
